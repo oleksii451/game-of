@@ -10,7 +10,7 @@ export default class ItemList extends Component {
         error: false
     }
 
-    aaa() {
+    componentDidMount() {
         const {getData} = this.props;
 
         getData()
