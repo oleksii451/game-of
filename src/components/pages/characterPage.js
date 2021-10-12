@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
-import {Col, Row, Container} from 'reactstrap';
+//import {Col, Row, Container} from 'reactstrap';
 import ItemList from "../itemList";
 import ItemDetails, {Field} from "../itemDetails";
 import ErrorMessage from "../errorMessage";
-import gotService from "../../services/gotService";
+import GotService from "../../services/gotService";
 import RowBlock from "../rowBlock";
 
 
 export default class CharacterPage extends Component {
 
-    gotService = new gotService();
+    gotService = new GotService();
 
     state = {
-        selectedChar: null,
+        selectedItem: null,
         error: false
     }
     componentDidCatch() {
@@ -40,7 +40,7 @@ export default class CharacterPage extends Component {
 
         const charDetails = (
             <ItemDetails
-                 itemId={this.state.selectedChar}
+                 itemId={this.state.selectedItem}
                  getData={this.gotService.getCharacterById}>
                 <Field field ='gender' label='Gender' />
                 <Field field='born' label='Born' />

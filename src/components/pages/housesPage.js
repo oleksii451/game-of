@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
-import {Col, Row, Container} from 'reactstrap';
+//import {Col, Row, Container} from 'reactstrap';
 import ItemList from "../itemList";
 import ItemDetails, {Field} from "../itemDetails";
 import ErrorMessage from "../errorMessage";
-import gotService from "../../services/gotService";
+import GotService from "../../services/gotService";
 import RowBlock from "../rowBlock";
-
 
 export default class HousesPage extends Component {
 
-    gotService = new gotService();
+    gotService = new GotService();
 
     state = {
         selectedHouse: null,
@@ -32,12 +31,13 @@ export default class HousesPage extends Component {
             return <ErrorMessage />
         }
 
-        const itemList =
-            <ItemList>
-                onItemSelected={this.onHouseSelected}
+        const itemList = (
+            <ItemList
+                //onItemSelected={this.onHouseSelected}
                 getData={this.gotService.getAllHouses}
                 renderItem={ (item) => item.name}
-            </ItemList>
+            />
+        )
 
         const houseDetails = (
             <ItemDetails itemId={this.state.selectedHouse}
@@ -51,3 +51,4 @@ export default class HousesPage extends Component {
         )
     }
 }
+
